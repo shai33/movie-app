@@ -17,6 +17,8 @@ function App() {
       "https://www.imdb.com/name/nm0000187/?ref_=nv_sr_srsg_3"));
   return (
     <Container>
+      <h1>Actors Gallery</h1>
+      <p></p>
       <ActorsComp actors={actorsData}/>
     </Container>
   );
