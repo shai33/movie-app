@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Container from 'react-bootstrap/Container';
 import './App.css';
 import ActorsComp from './components/ActorsView';
 import ActorModel from './data-models/ActorModel';
 import MoviesPage from './components/MoviesPage';
+import HomeComp from './components/HomePage';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 class App extends React.Component {  
   constructor(props){
@@ -17,13 +18,45 @@ class App extends React.Component {
   }
   render(){
     return (
+      <HashRouter>
       <Container>
+      <nav className="navbar navbar-expand-md navbar-light bg-light ">
+        <a href="/" className="navbar-brand text-primary">MOVIE-APP</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto w-100 d-flex">
+                <li className="nav-item">
+                    <a className="nav-link" id="open-actors" href="/#/actors">Actors</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/#/movies" id="open-movies">Movies</a>
+                  </li>
+                  <li className="nav-item ml-md-auto ml-sm-auto-0">
+                    <a className="nav-link" href="/#/signup">Signup</a>
+                  </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content" className="container ">
+      <Switch>
+      <Route exact path="/">
+        <HomeComp/>
+        </Route>
+        <Route exact path="/actors">
         <h1>Actors Gallery</h1>
         <p></p>
         <ActorsComp actors={this.state.actorsData}/>
         {/* <ActorsComp actors={actorsData}/> */}
+        </Route>
+        <Route exact path="/movies">
         <MoviesPage/>
+        </Route>
+        </Switch>
+        </div>
       </Container>
+      </HashRouter>
     );
     
   }
