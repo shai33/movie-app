@@ -46,3 +46,8 @@
   flex-direction: row-reverse;
   margin: 20px 0px;
 }
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  
+}

@@ -1,6 +1,7 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns';
+import CardDeck from 'react-bootstrap/CardDeck';
 import '../App.css';
 
 class ActorsComp extends React.Component{
@@ -78,7 +79,8 @@ class ActorsComp extends React.Component{
           console.log(this.props.actors);
         }
         for(let i=0; i<this.props.actors.length; i++) {
-            const cardContent = <Card style={{ width: '18rem' }}>
+            const cardContent = <Col xs={6} lg={3}>
+            <Card style={{ width: '18rem' }}>
               <Card.Img variant="top" src={this.props.actors[i]['image']}/>
               <Card.Body>
                  <Card.Title>{this.props.actors[i].fname} {this.props.actors[i]['lname']}</Card.Title>
@@ -86,6 +88,7 @@ class ActorsComp extends React.Component{
                  <Card.Link href={this.props.actors[i].link}>IMDb Link</Card.Link>
               </Card.Body>
               </Card>
+              </Col>
             // actorCardInfo.push(cardContent);
             console.log('boo', this.getFilter())
             if((this.props.actors[i].fname.includes(this.getFilter())) ||
@@ -113,11 +116,11 @@ class ActorsComp extends React.Component{
             </select>
             <label for="actors">Sort by:</label>
           </div>
-          <div>
-            <CardColumns>
+          <div className="gallery">
+            <Row>
                 {this.state.card ? filteredActor : actorCardInfo}
                 {/* {this.state.sort === 'age' ? filteredActor : actorCardInfo} */}
-            </CardColumns>
+            </Row>
           </div>
         </div>
           )

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Container from 'react-bootstrap/Container';
 import './App.css';
 import ActorsComp from './components/ActorsView';
 import ActorModel from './data-models/ActorModel';
+import MoviesPage from './components/MoviesPage';
 
 class App extends React.Component {  
   constructor(props){
@@ -20,6 +22,7 @@ class App extends React.Component {
         <p></p>
         <ActorsComp actors={this.state.actorsData}/>
         {/* <ActorsComp actors={actorsData}/> */}
+        <MoviesPage/>
       </Container>
     );
     
